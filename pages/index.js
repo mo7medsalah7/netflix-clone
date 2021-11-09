@@ -6,7 +6,7 @@ export default function Home() {
 
 	return (
 		<div
-			className="flex flex-col items-center justify-center min-h-screen bg-black"
+			className="flex flex-col overflow-x-hidden items-center justify-center min-h-screen bg-black"
 			style={{
 				backgroundImage:
 					"linear-gradient(rgba(0, 0, 0, 60%), rgba(0, 0, 0, 60%)), url(/bg-img.jpg)",
@@ -43,49 +43,64 @@ export default function Home() {
 					</svg>
 				</div>
 
-				{/* // Sign In & Sign Out Button  */}
-				<div className="">
-					{!session ? (
-						<button
-							className="flex  items-center bg-[#f40612]  text-white text-lg px-12 rounded-sm"
-							onClick={() => signIn("google")}
-						>
-							{" "}
-							Sign In{" "}
-						</button>
-					) : (
-						<button
-							className="flex  items-center bg-[#f40612]  text-white text-lg px-12 rounded-sm"
-							onClick={() => signOut()}
-						>
-							{" "}
-							Sign Out{" "}
-						</button>
+				{/* div wraps signed-in user name and button  */}
+				<div className="flex sm:flex-row xs:flex-col text-center justify-center items-center space-x-4">
+					{/* signed-in user if there's a session  */}
+					{session && (
+						<div className="text-white underline cursor-pointer  xs:text-xs sm:text-md md:text-lg ">
+							{session.user.name}
+						</div>
 					)}
+
+					{/* // Sign In & Sign Out Button  */}
+					<div className="">
+						{!session ? (
+							<button
+								className="flex  items-center bg-[#f40612]  text-white xs:text-xs sm:text-md md:text-lg px-12 rounded-sm"
+								onClick={() => signIn("google")}
+							>
+								{" "}
+								Sign In{" "}
+							</button>
+						) : (
+							<button
+								className="flex  items-center bg-[#f40612]  text-white xs:text-xs sm:text-md md:text-lg px-12 rounded-sm"
+								onClick={() => signOut()}
+							>
+								{" "}
+								Sign Out{" "}
+							</button>
+						)}
+					</div>
 				</div>
 			</header>
 
 			{/* main markup */}
 			<main className="flex flex-col items-center justify-center text-center flex-1 px-20">
-				<h1 className="text-4xl font-bold text-white max-w-lg">
+				{/* // heading title  */}
+				<h1 className="xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white max-w-lg tracking-wide">
 					Unlimited movies, Tv shows, and more.
 				</h1>
-				<h2 className="text-2xl text-white mt-4 mb-8">
+				{/* // Second title   */}
+				<h2 className="text-xl font-medium text-white mt-4 mb-8">
 					Watch anywhere. Cancel anytime.
 				</h2>
+				{/* small paragraph  */}
 				<p className="text-white text-lg">
 					Ready to watch? Enter your email to create or restart your
 					membership.
 				</p>
-				<div className="flex mt-4">
+
+				{/* // Get Started  */}
+				<div className="flex xs:flex-col sm:flex-row mt-4 justify-center ">
 					<input
 						type="email"
 						name="email"
 						placeholder="enter email"
-						className="bg-white p-4 min-w-[400px]"
+						className="bg-white p-4 xs:min-w-[350px] md:sm:min-w-[350px] lg:min-w-[400px]"
 					/>
-					<button className="flex justify-center items-center bg-[#f40612]  text-white text-lg px-8">
-						Get Started{" "}
+					<button className="flex flex-row justify-center text-center xs:mt-4 xs:py-2 sm:mt-0 items-center bg-[#f40612]  text-white sm:text-sm md:text-lg lg:text-lg">
+						<span className="flex-nowrap"> Get Started</span>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							className="h-6 w-6"

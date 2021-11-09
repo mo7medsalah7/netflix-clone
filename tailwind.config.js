@@ -1,3 +1,4 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
 	mode: "jit",
 	purge: [
@@ -8,8 +9,12 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				display: ["Lato"],
+				body: ['"Lato"'],
 			},
+		},
+		screens: {
+			xs: "300px",
+			...defaultTheme.screens,
 		},
 	},
 	variants: {
